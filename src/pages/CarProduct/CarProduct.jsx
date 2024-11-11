@@ -2,12 +2,15 @@ import MyNavbar from "@components/Navbar/MyNavbar";
 import NavList from "@components/Navbar/NavList";
 import LoadingIcon from "@components/LoadingIcon";
 import { useState } from "react";
+// import Cookies from "js-cookie";
 
 import CarList from "./CarList";
 import Pagination from "./Pagination";
 import useFetchCars from "../../Hooks/useFetchCars";
 
 function CarProduct() {
+  // console.log(Cookies.get("accessToken")); not http only
+
   const [page, setPage] = useState(1);
   const { cars, loading, totalData } = useFetchCars(page);
 
@@ -19,12 +22,12 @@ function CarProduct() {
         <NavList active={"products"} />
       </MyNavbar>
       {!cars.length || loading ? (
-        <div className="h-96 flex items-center">
+        <div className="h-[100vh] flex items-center">
           {loading ? (
             <LoadingIcon />
           ) : (
             <p className="mx-auto font-semibold text-xl text-black">
-              Products is empty. Please comeback soon...
+              No products available. Please comeback soon...
             </p>
           )}
         </div>

@@ -59,10 +59,10 @@ const NavList = ({ active }) => {
         <Link
           to="#"
           className={`flex items-center hover:text-blue-500 transition-colors ${
-            active === "contact" ? "text-blue-600" : undefined
+            active === "logout" ? "text-blue-600" : undefined
           }`}
         >
-          Contact
+          Logout
         </Link>
       </Typography>
     </ul>

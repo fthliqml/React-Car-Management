@@ -11,7 +11,8 @@ const useFetchCars = (page) => {
     async function fetchCars() {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/v1/cars?page=${page}`
+          `http://localhost:3000/api/v1/cars?page=${page}`,
+          { withCredentials: true }
         );
         const data = res.data;
         if (data.isSuccess) {

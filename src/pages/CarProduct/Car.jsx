@@ -31,7 +31,7 @@ const Car = ({ car }) => {
             <span className="font-semibold">Created:</span> {date}
           </li>
         </ul>
-        <Button variant="gradient" color="cyan" fullWidth="true">
+        <Button variant="gradient" color="cyan" fullWidth>
           Read more
         </Button>
       </div>
