@@ -1,8 +1,15 @@
 /* eslint-disable react/prop-types */
-import { Typography } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Typography, Button } from "@material-tailwind/react";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavList = ({ active }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("isAuthenticated");
+    navigate("/login");
+  };
+
   return (
     <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
@@ -56,14 +63,9 @@ const NavList = ({ active }) => {
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <Link
-          to="#"
-          className={`flex items-center hover:text-blue-500 transition-colors ${
-            active === "logout" ? "text-blue-600" : undefined
-          }`}
-        >
+        <Button color="cyan" onClick={handleLogout}>
           Logout
-        </Link>
+        </Button>
       </Typography>
     </ul>
   );

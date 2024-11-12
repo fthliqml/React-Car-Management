@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import MyCardFooter from "./MyCardFooter";
 
@@ -5,10 +6,9 @@ import { Input, Button, CardBody, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Form = () => {
+const Form = ({ onNotification }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -23,10 +23,27 @@ const Form = () => {
         { withCredentials: true }
       );
 
-      console.log("Login successful:", response.data);
-      navigate("/products");
+      const resAPI = response.data;
+
+      if (resAPI.isSuccess) {
+        // const user = resAPI.data.user;
+        onNotification(
+          "success",
+          resAPI.message,
+          "You are now redirected to homepage"
+        );
+        localStorage.setItem("isAuthenticated", true);
+        setTimeout(() => {
+          navigate("/products");
+        }, 2000);
+      }
     } catch (error) {
       console.log("Login failed:", error);
+      onNotification(
+        "error",
+        error.response.data.status,
+        error.response.data.message
+      );
     }
   };
 

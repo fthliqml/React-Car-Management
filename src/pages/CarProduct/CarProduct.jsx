@@ -7,12 +7,19 @@ import { useState } from "react";
 import CarList from "@components/CarProduct/CarList";
 import Pagination from "@components/CarProduct/Pagination";
 import useFetchCars from "../../Hooks/useFetchCars";
+import { Navigate } from "react-router-dom";
 
 function CarProduct() {
-  // console.log(Cookies.get("accessToken")); not http only
-
   const [page, setPage] = useState(1);
   const { cars, loading, totalData } = useFetchCars(page);
+
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
+
+  if (!isAuthenticated) {
+    return <Navigate to={"/login"} />;
+  }
+
+  // console.log(Cookies.get("accessToken")); not http only
 
   const totalPages = Math.ceil(totalData / 12);
 
