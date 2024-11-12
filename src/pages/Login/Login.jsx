@@ -1,6 +1,6 @@
 import { Card } from "@material-tailwind/react";
-import MyCardHeader from "./components/MyCardHeader";
-import Form from "./components/Form";
+import MyCardHeader from "@components/Login/MyCardHeader";
+import Form from "@components/Login/Form";
 
 const Login = () => {
   return (

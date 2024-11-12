@@ -4,8 +4,8 @@ import LoadingIcon from "@components/LoadingIcon";
 import { useState } from "react";
 // import Cookies from "js-cookie";
 
-import CarList from "./CarList";
-import Pagination from "./Pagination";
+import CarList from "@components/CarProduct/CarList";
+import Pagination from "@components/CarProduct/Pagination";
 import useFetchCars from "../../Hooks/useFetchCars";
 
 function CarProduct() {

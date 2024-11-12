@@ -3,7 +3,7 @@ import { Button } from "@material-tailwind/react";
 
 import MyNavbar from "@components/Navbar/MyNavbar";
 import NavList from "@components/Navbar/NavList";
-import HeroSection from "./components/HeroSection";
+import HeroSection from "@components/About/HeroSection";
 
 import "./About.css";
 

@@ -26,7 +26,7 @@ const Form = () => {
       console.log("Login successful:", response.data);
       navigate("/products");
     } catch (error) {
-      console.log("Login failed:", error.response.data);
+      console.log("Login failed:", error);
     }
   };
 
