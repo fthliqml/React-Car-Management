@@ -5,14 +5,14 @@ import MyCardFooter from "./MyCardFooter";
 import { Input, Button, CardBody, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "@contexts/AuthContext/AuthContext";
+import { useAuth } from "@contexts/AuthContext";
 
 const Form = ({ onNotification }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const { setIsAuthenticated } = useContext(AuthContext);
+  const { setIsAuthenticated } = useAuth();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,8 +45,8 @@ const Form = ({ onNotification }) => {
       console.log("Login failed:", error);
       onNotification(
         "error",
-        error.response.data.status,
-        error.response.data.message
+        error.response?.data.status || error.message,
+        error.response?.data.message || error.message
       );
     }
   };

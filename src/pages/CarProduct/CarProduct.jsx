@@ -8,14 +8,14 @@ import { useContext, useState } from "react";
 import CarList from "@components/CarProduct/CarList";
 import Pagination from "@components/CarProduct/Pagination";
 import useFetchCars from "@hooks/useFetchCars";
-import AuthContext from "@contexts/AuthContext/AuthContext";
+import { useAuth } from "@contexts/AuthContext";
 import { Navigate } from "react-router-dom";
 
 function CarProduct() {
   const [page, setPage] = useState(1);
   const { cars, loading, totalData } = useFetchCars(page);
 
-  // const { isAuthenticated } = useContext(AuthContext);
+  // const { isAuthenticated } = useAuth();
   const isAuthenticated = localStorage.getItem("isAuthenticated");
 
   if (!isAuthenticated) {

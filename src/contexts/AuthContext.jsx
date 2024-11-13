@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
-import AuthContext from "./AuthContext";
+import { createContext, useContext, useState } from "react";
+
+const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -11,4 +12,8 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-export default AuthProvider;
+const useAuth = () => {
+  return useContext(AuthContext);
+};
+
+export { AuthProvider, useAuth };

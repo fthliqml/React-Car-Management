@@ -2,10 +2,10 @@
 import { Typography, Button } from "@material-tailwind/react";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AuthContext from "@contexts/AuthContext/AuthContext";
+import { useAuth } from "@contexts/AuthContext";
 
 const NavList = ({ active }) => {
-  const { setIsAuthenticated } = useContext(AuthContext);
+  const { setIsAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {

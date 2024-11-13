@@ -28,6 +28,7 @@ const useFetchCars = (page) => {
       }
     }
     fetchCars();
+    // Auto scroll to top page
     window.scrollTo({
       top: 0,
       left: 0,
