@@ -35,7 +35,7 @@ const HeroSection = ({ name, tech }) => {
         software engineer.
       </p>
 
-      <form>
+      <form className="form">
         <input
           type="text"
           placeholder="Name"

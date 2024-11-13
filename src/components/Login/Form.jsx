@@ -55,7 +55,7 @@ const Form = ({ onNotification }) => {
     <CardBody>
       <form
         onSubmit={(e) => handleSubmit(e)}
-        className="flex flex-col gap-4 md:mt-12"
+        className="flex flex-col gap-4 md:mt-12 w-96 mx-auto"
       >
         <div>
           <label htmlFor="email">

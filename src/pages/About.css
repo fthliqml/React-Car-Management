@@ -9,7 +9,7 @@
 }
 
 /* Styling untuk form secara keseluruhan */
-form {
+.form {
   /* max-width: 400px; */
   width: 70%;
   margin: 20px auto;

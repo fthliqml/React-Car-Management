@@ -4,6 +4,7 @@ import Login from "@pages/Login";
 import About from "@pages/About";
 import NotFound from "@pages/NotFound";
 import CarProduct from "@pages/CarProduct";
+import Feedback from "@pages/Feedback";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/products",
     element: <CarProduct />,
+  },
+  {
+    path: "/feedback",
+    element: <Feedback />,
   },
 ]);
 
