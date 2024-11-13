@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { Typography, Button } from "@material-tailwind/react";
-import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@contexts/AuthContext";
 
@@ -59,6 +58,21 @@ const NavList = ({ active }) => {
           }`}
         >
           Services
+        </Link>
+      </Typography>
+      <Typography
+        as="li"
+        variant="h6"
+        color="blue-gray"
+        className="p-1 font-medium"
+      >
+        <Link
+          to="/feedback"
+          className={`flex items-center hover:text-blue-500 transition-colors ${
+            active === "feedback" ? "text-blue-600" : undefined
+          }`}
+        >
+          Feedback
         </Link>
       </Typography>
       <Typography

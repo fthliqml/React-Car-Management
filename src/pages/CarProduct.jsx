@@ -1,7 +1,7 @@
 import MyNavbar from "@components/Navbar/MyNavbar";
 import NavList from "@components/Navbar/NavList";
 import LoadingIcon from "@components/LoadingIcon";
-import { useContext, useState } from "react";
+import { useState } from "react";
 // import Cookies from "js-cookie";
 // console.log(Cookies.get("accessToken")); not http only
 
