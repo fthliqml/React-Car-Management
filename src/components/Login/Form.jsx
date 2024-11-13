@@ -1,15 +1,18 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useContext, useState } from "react";
 import MyCardFooter from "./MyCardFooter";
 
 import { Input, Button, CardBody, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "@contexts/AuthContext/AuthContext";
 
 const Form = ({ onNotification }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const { setIsAuthenticated } = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,6 +36,7 @@ const Form = ({ onNotification }) => {
           "You are now redirected to homepage"
         );
         localStorage.setItem("isAuthenticated", true);
+        setIsAuthenticated(true);
         setTimeout(() => {
           navigate("/products");
         }, 2000);

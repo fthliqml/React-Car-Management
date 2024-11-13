@@ -1,15 +1,11 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState } from "react";
-
-const AuthContext = createContext();
+import { useState } from "react";
+import AuthContext from "./AuthContext";
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
-    <AuthContext.Provider
-      value={{ user, setUser, isAuthenticated, setIsAuthenticated }}
-    >
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );

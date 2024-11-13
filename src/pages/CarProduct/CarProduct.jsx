@@ -1,25 +1,26 @@
 import MyNavbar from "@components/Navbar/MyNavbar";
 import NavList from "@components/Navbar/NavList";
 import LoadingIcon from "@components/LoadingIcon";
-import { useState } from "react";
+import { useContext, useState } from "react";
 // import Cookies from "js-cookie";
+// console.log(Cookies.get("accessToken")); not http only
 
 import CarList from "@components/CarProduct/CarList";
 import Pagination from "@components/CarProduct/Pagination";
-import useFetchCars from "../../Hooks/useFetchCars";
+import useFetchCars from "@hooks/useFetchCars";
+import AuthContext from "@contexts/AuthContext/AuthContext";
 import { Navigate } from "react-router-dom";
 
 function CarProduct() {
   const [page, setPage] = useState(1);
   const { cars, loading, totalData } = useFetchCars(page);
 
+  // const { isAuthenticated } = useContext(AuthContext);
   const isAuthenticated = localStorage.getItem("isAuthenticated");
 
   if (!isAuthenticated) {
     return <Navigate to={"/login"} />;
   }
-
-  // console.log(Cookies.get("accessToken")); not http only
 
   const totalPages = Math.ceil(totalData / 12);
 
