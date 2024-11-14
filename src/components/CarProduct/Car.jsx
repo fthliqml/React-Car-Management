@@ -7,7 +7,11 @@ const Car = ({ car }) => {
 
   return (
     <div className="max-w-sm lg:max-w-md m-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <img className="rounded-t-lg" src="/images/car08.min.jpg" alt="car" />
+      <img
+        className="rounded-t-lg h-96 w-full object-cover"
+        src={car.image}
+        alt="car"
+      />
 
       <div className="p-5">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">

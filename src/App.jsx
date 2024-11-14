@@ -5,6 +5,7 @@ import About from "@pages/About";
 import NotFound from "@pages/NotFound";
 import CarProduct from "@pages/CarProduct";
 import Feedback from "@pages/Feedback";
+import { AuthProvider } from "@contexts/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -14,15 +15,27 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <AuthProvider>
+        <Login />
+      </AuthProvider>
+    ),
   },
   {
     path: "/about",
-    element: <About />,
+    element: (
+      <AuthProvider>
+        <About />
+      </AuthProvider>
+    ),
   },
   {
     path: "/products",
-    element: <CarProduct />,
+    element: (
+      <AuthProvider>
+        <CarProduct />
+      </AuthProvider>
+    ),
   },
   {
     path: "/feedback",
