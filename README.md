@@ -1,5 +1,10 @@
 # React SPA Car Management
 
+## Feature
+
+1. JWT Authenticate in **http only** cookie
+2. Using React Context API for **authenticate** in frontend and Context API for **cart**
+
 ## 📷 Screenshot / Demo
 
 ### Login Page
@@ -8,8 +13,8 @@
 
 ### Product Page
 
-![Product](https://github.com/user-attachments/assets/d036d685-3073-4352-85e7-3600117e7e3f)
+![Product](https://github.com/user-attachments/assets/e822ff44-9cca-4406-972f-ca62fbae3393)
 
 ### About Page
 
-![About](https://github.com/user-attachments/assets/576720dc-345a-4008-9603-ec64c9226c89)
+![About](https://github.com/user-attachments/assets/6e4e5f68-e070-4c95-ad3a-4cb5a2b69610)

@@ -1,0 +1,2 @@
+1. axios interceptors
+2. fetch api bisa ditaruh di context dan state seperti data mobil dan lainnya bisa terpusat pada 1 provider. Tidak perlu mengoper oper data lagi

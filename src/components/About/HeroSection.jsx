@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
+import { useCart } from "@contexts/CartContext";
 
 import { useState } from "react";
 import { Button } from "@material-tailwind/react";
 
 const HeroSection = ({ name, tech }) => {
+  const { cartCount, setCarInCart, setCartCount } = useCart();
+
   const [nameValue, setNameValue] = useState(name);
   const [techValue, setTechValue] = useState(tech);
 
@@ -17,9 +20,24 @@ const HeroSection = ({ name, tech }) => {
     setTechDescription(techValue);
   }
 
+  function handleReset() {
+    setCarInCart([]);
+    setCartCount(0);
+  }
+
   return (
     <>
       <h1 className="mb-2 text-2xl font-bold">About Me</h1>
+      <div className="flex gap-5 mb-5 justify-center items-center">
+        <p className="text-xl">
+          You have put{" "}
+          <span className="text-red-600 font-bold">{cartCount}</span> cars in
+          your cart {"->"}
+        </p>
+        <Button variant="outlined" color="red" onClick={handleReset}>
+          Reset Cart
+        </Button>
+      </div>
       <p>
         Hello! My name is{" "}
         <span style={{ color: "red" }}>{nameDescription}</span> i’m a passionate{" "}

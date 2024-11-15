@@ -6,6 +6,7 @@ import NotFound from "@pages/NotFound";
 import CarProduct from "@pages/CarProduct";
 import Feedback from "@pages/Feedback";
 import { AuthProvider } from "@contexts/AuthContext";
+import { CartProvider } from "@contexts/CartContext";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,9 @@ const router = createBrowserRouter([
     path: "/about",
     element: (
       <AuthProvider>
-        <About />
+        <CartProvider>
+          <About />
+        </CartProvider>
       </AuthProvider>
     ),
   },
@@ -41,7 +44,9 @@ const router = createBrowserRouter([
     path: "/products",
     element: (
       <AuthProvider>
-        <CarProduct />
+        <CartProvider>
+          <CarProduct />
+        </CartProvider>
       </AuthProvider>
     ),
   },

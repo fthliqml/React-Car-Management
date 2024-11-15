@@ -3,6 +3,8 @@ import { Typography, Button } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@contexts/AuthContext";
 import axios from "axios";
+import { ShoppingCartIcon } from "@heroicons/react/24/solid";
+import Cart from "./Cart";
 
 const NavList = ({ active }) => {
   const { setIsAuthenticated } = useAuth();
@@ -83,6 +85,7 @@ const NavList = ({ active }) => {
           Feedback
         </Link>
       </Typography>
+      <Cart />
       <Typography
         as="li"
         variant="h6"

@@ -1,9 +1,29 @@
 /* eslint-disable react/prop-types */
 
 import { Button } from "@material-tailwind/react";
+import { useCart } from "@contexts/CartContext";
+import { useEffect, useState } from "react";
 
 const Car = ({ car }) => {
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const { setCartCount, carInCart, setCarInCart } = useCart();
   const date = new Date(car.createdAt).toLocaleString("id-ID");
+
+  useEffect(() => {
+    carInCart.includes(car.id)
+      ? setIsAddedToCart(true)
+      : setIsAddedToCart(false);
+  }, [carInCart, car.id]);
+
+  function handleCart() {
+    setCartCount((prev) => (isAddedToCart ? prev - 1 : prev + 1));
+    setCarInCart((prevArr) =>
+      isAddedToCart
+        ? prevArr.filter((num) => num !== car.id)
+        : [...prevArr, car.id]
+    );
+    setIsAddedToCart((prev) => !prev);
+  }
 
   return (
     <div className="max-w-sm lg:max-w-md m-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -35,8 +55,13 @@ const Car = ({ car }) => {
             <span className="font-semibold">Created:</span> {date}
           </li>
         </ul>
-        <Button variant="gradient" color="cyan" fullWidth>
-          Read more
+        <Button
+          variant="gradient"
+          color={isAddedToCart ? "red" : "cyan"}
+          fullWidth
+          onClick={handleCart}
+        >
+          {isAddedToCart ? "Cancel add" : "Add to cart"}
         </Button>
       </div>
     </div>

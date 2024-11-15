@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import CarList from "@components/CarProduct/CarList";
 import Pagination from "@components/CarProduct/Pagination";
-import useFetchCars from "@hooks/useFetchCars";
+import useFetchCars from "@hooks/useFetchCarsAxIns";
 import { useAuth } from "@contexts/AuthContext";
 import { Navigate } from "react-router-dom";
 
