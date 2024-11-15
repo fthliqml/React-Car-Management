@@ -13,7 +13,7 @@
 
 ### Product Page
 
-![Product](https://github.com/user-attachments/assets/e822ff44-9cca-4406-972f-ca62fbae3393)
+![Product](https://github.com/user-attachments/assets/142bb405-25a8-4e52-8c7a-6c1d36b07d24)
 
 ### About Page
 
