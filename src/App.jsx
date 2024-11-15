@@ -9,9 +9,17 @@ import { AuthProvider } from "@contexts/AuthContext";
 
 const router = createBrowserRouter([
   {
+    path: "*",
+    element: <NotFound />,
+  },
+  {
     path: "/",
-    element: <Login />,
-    errorElement: <NotFound />,
+    element: (
+      <AuthProvider>
+        <Login />
+      </AuthProvider>
+    ),
+    // errorElement: <NotFound />, // Handling when Login page is error
   },
   {
     path: "/login",

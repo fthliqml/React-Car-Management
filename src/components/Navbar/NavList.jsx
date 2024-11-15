@@ -2,12 +2,20 @@
 import { Typography, Button } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@contexts/AuthContext";
+import axios from "axios";
 
 const NavList = ({ active }) => {
   const { setIsAuthenticated } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await axios.get("http://localhost:3000/api/v1/auth/logout", {
+        withCredentials: true,
+      });
+    } catch (error) {
+      console.log(error);
+    }
     localStorage.removeItem("isAuthenticated");
     setIsAuthenticated(false);
     navigate("/login");

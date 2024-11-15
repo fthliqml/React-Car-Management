@@ -1,8 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useAuth } from "@contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-const useFetchCars = (page) => {
+const useFetchCars = (limit, offset) => {
+  const { setIsAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
   const [cars, setCars] = useState([]);
   const [totalData, setTotalData] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -11,7 +16,7 @@ const useFetchCars = (page) => {
     async function fetchCars() {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/v1/cars?page=${page}`,
+          `http://localhost:3000/api/v1/cars?limit=${limit}&offset=${offset}`,
           { withCredentials: true }
         );
         const data = res.data;
@@ -22,7 +27,11 @@ const useFetchCars = (page) => {
           setTotalData(totalData);
         }
       } catch (err) {
-        console.log(err);
+        if (err.status === 401) {
+          localStorage.removeItem("isAuthenticated");
+          setIsAuthenticated(false);
+          navigate("/login");
+        }
       } finally {
         setLoading(false);
       }
@@ -34,7 +43,7 @@ const useFetchCars = (page) => {
       left: 0,
       behavior: "smooth",
     });
-  }, [page]);
+  }, [limit, offset, setIsAuthenticated, navigate]);
 
   return { cars, totalData, loading };
 };

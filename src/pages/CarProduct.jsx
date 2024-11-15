@@ -13,7 +13,9 @@ import { Navigate } from "react-router-dom";
 
 function CarProduct() {
   const [page, setPage] = useState(1);
-  const { cars, loading, totalData } = useFetchCars(page);
+  const limit = 12;
+  const offset = (page - 1) * limit;
+  const { cars, loading, totalData } = useFetchCars(limit, offset);
 
   // const { isAuthenticated } = useAuth();
   const isAuthenticated = localStorage.getItem("isAuthenticated");
@@ -22,7 +24,7 @@ function CarProduct() {
     return <Navigate to={"/login"} />;
   }
 
-  const totalPages = Math.ceil(totalData / 12);
+  const totalPages = Math.ceil(totalData / limit);
 
   return (
     <>
